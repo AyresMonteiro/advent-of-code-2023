@@ -54,15 +54,16 @@ cumulative_copies = []
 i = 0
 
 loop do
+    instances = read_scratchcard
+    
+    if instances == -1 then break end
+
     if (cumulative_copies[i] == nil) then
         cumulative_copies.push(1)
     else
         cumulative_copies[i] += 1
     end
 
-    instances = read_scratchcard
-
-    if instances == -1 then break end
 
     for j in 0...instances do
         if cumulative_copies[i + j + 1] == nil then
